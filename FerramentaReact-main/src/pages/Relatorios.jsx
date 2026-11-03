@@ -1,9 +1,23 @@
 import { Link } from 'react-router-dom'
-import { PageHeader, Card } from '../components/Common'
-import { relatoriosList } from '../utils/mockData'
+import { PageHeader } from '../components/Common'
 import './Relatorios.css'
 
 export default function Relatorios() {
+  const relatoriosList = [
+    {
+      id: 1,
+      titulo: 'Vendas por Período',
+      descricao: 'Análise detalhada das vendas realizadas em um período específico.',
+      link: '/relatorio-vendas'
+    },
+    {
+      id: 2,
+      titulo: 'Estoque Crítico',
+      descricao: 'Lista de produtos com estoque abaixo do mínimo.',
+      link: '/relatorio-estoque-critico'
+    }
+  ]
+
   return (
     <div className="page">
       <PageHeader title="Relatórios" subtitle="Acessar relatórios e análises" />

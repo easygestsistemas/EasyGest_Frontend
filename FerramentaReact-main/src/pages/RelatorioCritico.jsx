@@ -1,8 +1,39 @@
+import { useEffect, useState } from 'react'
 import { PageHeader, Card, KPICard, Badge, Table } from '../components/Common'
-import { estoqueCritico } from '../utils/mockData'
+import { apiJson } from '../utils/api'
 import './Pages.css'
 
 export default function RelatorioCritico() {
+  const [estoqueCritico, setEstoqueCritico] = useState([])
+
+  useEffect(() => {
+    const carregarEstoqueCritico = async () => {
+      try {
+        const produtos = await apiJson('/produtos')
+        const dados = (produtos || [])
+          .map(produto => {
+            const estoque = Number(produto.quantidadeAtual || 0)
+            const minimo = Number(produto.estoqueMinimo || 0)
+            return {
+              sku: produto.codProduto,
+              produto: produto.nomeProduto,
+              estoque,
+              minimo,
+              status: estoque <= minimo ? 'Crítico' : estoque <= minimo * 1.2 ? 'Alerta' : null
+            }
+          })
+          .filter(item => item.status)
+
+        setEstoqueCritico(dados)
+      } catch (error) {
+        console.error('Erro ao carregar estoque crítico:', error)
+        setEstoqueCritico([])
+      }
+    }
+
+    carregarEstoqueCritico()
+  }, [])
+
   const criticCount = estoqueCritico.filter(e => e.status === 'Crítico').length
   const alertCount = estoqueCritico.filter(e => e.status === 'Alerta').length
 

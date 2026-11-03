@@ -1,16 +1,59 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import { PageHeader, Card, KPICard, Table } from '../components/Common'
-import { vendasDetalhadas, vendasSemanal } from '../utils/mockData'
+import { apiJson } from '../utils/api'
 import { formatCurrency } from '../utils/helpers'
 import './Pages.css'
 
 export default function RelatorioVendas() {
   const [period, setPeriod] = useState('7d')
+  const [vendasDetalhadas, setVendasDetalhadas] = useState([])
 
-  const totalVendas = vendasDetalhadas.reduce((sum, v) => sum + v.valor, 0)
-  const numeroVendas = vendasDetalhadas.length
-  const ticketMedio = totalVendas / numeroVendas
+  useEffect(() => {
+    const carregarVendas = async () => {
+      try {
+        const vendas = await apiJson('/vendas')
+        const dados = (vendas || []).map(venda => ({
+          data: venda.dataVenda || '',
+          produto: venda.itens?.[0]?.produto?.nomeProduto || venda.produto?.nomeProduto || 'Venda',
+          cliente: venda.cliente?.nomeCliente || 'Sem cliente',
+          valor: Number(venda.valorTotal || 0)
+        }))
+        setVendasDetalhadas(dados)
+      } catch (error) {
+        console.error('Erro ao carregar relatório de vendas:', error)
+        setVendasDetalhadas([])
+      }
+    }
+
+    carregarVendas()
+  }, [])
+
+  const vendasFiltradas = useMemo(() => {
+    if (period === 'custom') return vendasDetalhadas
+
+    const hoje = new Date()
+    const limite = period === 'today'
+      ? new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate())
+      : new Date(hoje.getTime() - (period === '30d' ? 30 : 7) * 24 * 60 * 60 * 1000)
+
+    return vendasDetalhadas.filter(venda => {
+      if (!venda.data) return false
+      return new Date(venda.data) >= limite
+    })
+  }, [period, vendasDetalhadas])
+
+  const totalVendas = vendasFiltradas.reduce((sum, v) => sum + v.valor, 0)
+  const numeroVendas = vendasFiltradas.length
+  const ticketMedio = numeroVendas > 0 ? totalVendas / numeroVendas : 0
+
+  const vendasPorDia = vendasFiltradas.reduce((totais, venda) => {
+    const dia = venda.data ? String(venda.data).slice(0, 10) : 'Sem data'
+    totais[dia] = (totais[dia] || 0) + venda.valor
+    return totais
+  }, {})
+
+  const vendasSemanal = Object.entries(vendasPorDia).map(([dia, valor]) => ({ dia, valor }))
 
   const chartData = {
     labels: vendasSemanal.map(v => v.dia),
@@ -55,7 +98,7 @@ export default function RelatorioVendas() {
       </Card>
 
       <Card title="Vendas Detalhadas">
-        <Table columns={columns} data={vendasDetalhadas} />
+        <Table columns={columns} data={vendasFiltradas} />
       </Card>
     </div>
   )

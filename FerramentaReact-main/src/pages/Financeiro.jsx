@@ -1,14 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { PageHeader, Card, Table, Badge } from '../components/Common'
-import { contasPagar, contasReceber, conciliacao } from '../utils/mockData'
+import { apiJson } from '../utils/api'
 import { formatCurrency, formatDate } from '../utils/helpers'
 import './Pages.css'
 
 export default function Financeiro() {
   const [activeTab, setActiveTab] = useState('pagar')
+  const [contasPagar, setContasPagar] = useState([])
+  const [contasReceber, setContasReceber] = useState([])
+  const [conciliacao, setConciliacao] = useState([])
+
+  useEffect(() => {
+    const carregarFinanceiro = async () => {
+      const [pagarResult, receberResult, conciliacaoResult] = await Promise.allSettled([
+        apiJson('/contas-pagar'),
+        apiJson('/contas-receber'),
+        apiJson('/conciliacao-bancaria')
+      ])
+
+      if (pagarResult.status === 'fulfilled') setContasPagar(pagarResult.value || [])
+      if (receberResult.status === 'fulfilled') setContasReceber(receberResult.value || [])
+      if (conciliacaoResult.status === 'fulfilled') setConciliacao(conciliacaoResult.value || [])
+    }
+
+    carregarFinanceiro()
+  }, [])
 
   const contasColumns = [
-    { key: 'fornecedor' || 'cliente', label: 'Fornecedor/Cliente' },
+    {
+      key: 'fornecedor',
+      label: 'Fornecedor/Cliente',
+      render: (row) => row.fornecedor?.nomeFornecedor || row.fornecedor || row.cliente?.nomeCliente || row.cliente || '-'
+    },
     { key: 'nfe', label: 'NF-e' },
     { key: 'vencimento', label: 'Vencimento', render: (row) => formatDate(row.vencimento) },
     { key: 'valor', label: 'Valor', render: (row) => formatCurrency(row.valor) },

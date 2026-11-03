@@ -18,13 +18,11 @@ import { clearBasicAuth, hasBasicAuth } from './utils/api'
 import './App.css'
 
 function App() {
-  const developmentMode = import.meta.env.VITE_EASYGEST_DEVELOPMENT_MODE === 'true'
   const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 1024)
-  const [authenticated, setAuthenticated] = useState(() => developmentMode || hasBasicAuth())
+  const [authenticated, setAuthenticated] = useState(() => hasBasicAuth())
 
   useEffect(() => {
     const handleAuthRequired = () => {
-      if (developmentMode) return
       clearBasicAuth()
       setAuthenticated(false)
     }
