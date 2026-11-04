@@ -29,7 +29,7 @@ A origem CORS deve conter explicitamente o domínio real do Vercel, por exemplo 
 npm run dev
 ```
 
-O Vite ficará acessível em `http://localhost:5173`. Para acessar pela rede local, use também o endereço de rede exibido pelo Vite no terminal.
+O Vite ficará acessível em `http://localhost:5173`. Em desenvolvimento, as chamadas `/api` passam pelo proxy do Vite e são encaminhadas ao backend do Render, evitando o bloqueio de CORS enquanto o front roda em localhost. Para acessar pela rede local, use também o endereço de rede exibido pelo Vite no terminal.
 
 # React + Vite
 

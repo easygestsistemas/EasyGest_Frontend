@@ -1,6 +1,8 @@
 const configuredApiUrl = import.meta.env.VITE_API_URL?.trim()
 
-export const API_URL = (configuredApiUrl || 'https://easygest-backend-ktc4.onrender.com').replace(/\/+$/, '')
+export const API_URL = import.meta.env.DEV
+  ? '/api'
+  : (configuredApiUrl || 'https://easygest-backend-ktc4.onrender.com').replace(/\/+$/, '')
 const BASIC_AUTH_KEY = 'easygest.basicAuth'
 
 export function apiUrl(path = '') {
