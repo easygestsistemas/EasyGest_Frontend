@@ -23,6 +23,14 @@ EASYGEST_CORS_ALLOWED_ORIGINS
 
 A origem CORS deve conter explicitamente o domínio real do Vercel, por exemplo `https://easygest.vercel.app`.
 
+## Executar localmente
+
+```bash
+npm run dev
+```
+
+O Vite ficará acessível em `http://localhost:5173`. Para acessar pela rede local, use também o endereço de rede exibido pelo Vite no terminal.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
