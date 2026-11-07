@@ -1,5 +1,42 @@
 # EasyGest Frontend
 
+## Contribuicoes por participante
+
+As atividades abaixo foram organizadas por data, do commit mais antigo ao mais recente.
+
+### Leonardo
+
+- **28/05/2026** - iniciou o versionamento do projeto e criou a estrutura inicial de arquivos.
+- **29/05/2026** - adicionou a configuracao de deploy na Vercel; configurou ajustes iniciais e corrigiu estilos e rotas.
+- **29/05/2026** - alterou o layout da interface e revisou a responsividade para dispositivos moveis.
+- **31/05/2026** - atualizou dados relacionados ao usuario e integrou a pagina de Clientes ao banco de dados.
+- **02/06/2026** - atualizou Fornecedores, Prestadores, Produtos e Recursos Humanos; ajustou o modulo de Estoque.
+- **04/06/2026** - ajustou o Dashboard e a tela de Vendas.
+- **05/06/2026** - atualizou dados e ajustes das telas de Dashboard.
+- **08/06/2026** - ajustou itens e apresentacao das telas de Vendas e Dashboard.
+- **27/10/2026** - configurou URLs e o acesso centralizado a APIs por meio das paginas e de `src/utils/api.js`.
+- **28/10/2026** - integrou telas ao banco, centralizou chamadas HTTP e atualizou login, navegacao, layout e documentacao.
+- **02/11/2026** - substituiu dados simulados por consultas reais em Financeiro, relatorios, Dashboard e configuracoes.
+- **03/11/2026** - configurou frontend local, proxy do Vite e execucao em rede local.
+- **03/11/2026** - ajustou o endpoint da API para funcionar localmente e em producao.
+
+### Joao
+
+- Nenhum commit identificado com o nome Joao no historico Git disponivel.
+
+### Cauã
+
+- **29/05/2026** - ajustou o layout responsivo em `App.jsx`, componentes compartilhados, navegacao e Dashboard.
+
+### Ryan
+
+- **05/11/2026** - atualizou configuracoes, documentacao, dependencias, paginas, componentes, estilos, logotipo, login, utilitarios e `vercel.json`.
+- **05/11/2026** - reorganizou e corrigiu a estrutura da aplicacao dentro da pasta principal do frontend.
+
+### Davi
+
+- **03/11/2026** - criou e aprimorou a tela de Login em `src/components/Login.jsx` e `src/components/Login.css`.
+
 ## Configuração do backend
 
 Configure `VITE_API_URL` no Vercel somente com a URL pública do backend, sem barra final. Esta variável não contém credenciais.
