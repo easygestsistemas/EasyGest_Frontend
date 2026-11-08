@@ -14,6 +14,7 @@ import {
   faUserTie
 } from '@fortawesome/free-solid-svg-icons'
 import { clearBasicAuth, hasBasicAuth, setBasicAuth } from '../../utils/api'
+import logotipo from '../../../img/logotipo.png'
 import './Layout.css'
 
 export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
@@ -79,6 +80,7 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="logo">
+          <img className="logo-mark" src={logotipo} alt="EasyGest" />
           <h1>EasyGest</h1>
         </div>
         <nav className="menu">
@@ -97,7 +99,7 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
       </aside>
 
       {/* Main Content */}
-      <div className="main-content">
+      <div className={`main-content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* Topbar */}
         <header className="topbar">
           <button

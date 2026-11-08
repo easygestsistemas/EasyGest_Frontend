@@ -10,7 +10,7 @@
   width: 260px;
   background: #1E2E4F;
   color: white;
-  overflow-y: auto;
+  overflow: hidden;
   transition: transform 0.3s ease;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
 }
@@ -29,6 +29,10 @@
   font-size: 24px;
   font-weight: 700;
   color: #8FB3E2;
+}
+
+.sidebar .logo-mark {
+  display: none;
 }
 
 .sidebar .menu {
@@ -67,6 +71,99 @@
 
 .sidebar .menu-item .label {
   font-size: 14px;
+}
+
+@media (min-width: 1025px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 72px;
+    height: 100vh;
+    z-index: 1000;
+    transition: width 0.25s ease;
+  }
+
+  .sidebar.closed {
+    transform: none;
+    width: 72px;
+  }
+
+  .sidebar.open {
+    transform: none;
+    width: 260px;
+  }
+
+  .sidebar .logo {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .sidebar .logo-mark {
+    display: block;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+
+  .sidebar .logo h1 {
+    min-width: 260px;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.15s ease;
+  }
+
+  .sidebar.open .logo-mark {
+    opacity: 0;
+  }
+
+  .sidebar.open .logo h1 {
+    opacity: 1;
+  }
+
+  .sidebar .menu-item {
+    justify-content: flex-start;
+    padding-left: 26px;
+    overflow: hidden;
+  }
+
+  .sidebar .menu-item .icon {
+    width: 20px;
+    flex: 0 0 20px;
+    font-size: 18px;
+  }
+
+  .sidebar .menu-item .label {
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+  }
+
+  .sidebar.open .menu-item {
+    padding-left: 20px;
+  }
+
+  .sidebar.open .menu-item .label {
+    opacity: 1;
+    margin-left: 12px;
+  }
+
+  .main-content.sidebar-closed {
+    margin-left: 72px;
+    transition: margin-left 0.25s ease;
+  }
+
+  .main-content.sidebar-open {
+    margin-left: 260px;
+    transition: margin-left 0.25s ease;
+  }
 }
 
 /* MAIN CONTENT */
