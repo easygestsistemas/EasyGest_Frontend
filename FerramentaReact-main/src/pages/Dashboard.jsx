@@ -337,7 +337,7 @@ setMovMensal(
           variation={
             kpis.variacaoVendas
           }
-          icon="📊"
+          
         />
 
         <KPICard
@@ -348,7 +348,7 @@ setMovMensal(
           variation={
             kpis.variacaoTicket
           }
-          icon="🎫"
+          
         />
 
         <KPICard
@@ -359,7 +359,7 @@ setMovMensal(
           variation={
             kpis.variacaoItens
           }
-          icon="📦"
+          
         />
 
         <KPICard
@@ -368,7 +368,7 @@ setMovMensal(
           variation={
             kpis.variacaoMargem
           }
-          icon="💰"
+          
         />
 
       </div>

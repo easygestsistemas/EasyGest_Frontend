@@ -1,6 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faBox,
+  faBoxesStacked,
+  faChartColumn,
+  faChartLine,
+  faHandshake,
+  faMoneyBillWave,
+  faScrewdriverWrench,
+  faUser,
+  faUsers,
+  faUserTie
+} from '@fortawesome/free-solid-svg-icons'
 import { clearBasicAuth, hasBasicAuth, setBasicAuth } from '../../utils/api'
+import logotipo from '../../../img/logotipo.png'
 import './Layout.css'
 
 export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
@@ -47,16 +61,16 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
   }
 
   const menuItems = [
-    { path: '/', label: 'Dashboard', icon: '📊' },
-    { path: '/clientes', label: 'Clientes', icon: '👥' },
-    { path: '/produtos', label: 'Produtos', icon: '📦' },
-    { path: '/estoque', label: 'Estoque', icon: '📦' },
-    { path: '/financeiro', label: 'Financeiro', icon: '💰' },
-    { path: '/fornecedores', label: 'Fornecedores', icon: '🤝' },
-    { path: '/rh', label: 'RH', icon: '👔' },
-    { path: '/prestadores', label: 'Prestadores', icon: '🛠️' },
-    { path: '/relatorios', label: 'Relatórios', icon: '📈' },
-    { path: '/perfil', label: 'Perfil', icon: '⚙️' }
+    { path: '/', label: 'Dashboard', icon: faChartLine },
+    { path: '/clientes', label: 'Clientes', icon: faUsers },
+    { path: '/produtos', label: 'Produtos', icon: faBox },
+    { path: '/estoque', label: 'Estoque', icon: faBoxesStacked },
+    { path: '/financeiro', label: 'Financeiro', icon: faMoneyBillWave },
+    { path: '/fornecedores', label: 'Fornecedores', icon: faHandshake },
+    { path: '/rh', label: 'RH', icon: faUserTie },
+    { path: '/prestadores', label: 'Prestadores', icon: faScrewdriverWrench },
+    { path: '/relatorios', label: 'Relatórios', icon: faChartColumn },
+    { path: '/perfil', label: 'Perfil', icon: faUser }
   ]
 
   return (
@@ -66,6 +80,7 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="logo">
+          <img className="logo-mark" src={logotipo} alt="EasyGest" />
           <h1>EasyGest</h1>
         </div>
         <nav className="menu">
@@ -76,7 +91,7 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
               className={`menu-item ${isActive(item.path) ? 'active' : ''}`}
               onClick={closeSidebar}
             >
-              <span className="icon">{item.icon}</span>
+              <span className="icon"><FontAwesomeIcon icon={item.icon} /></span>
               <span className="label">{item.label}</span>
             </Link>
           ))}
@@ -84,7 +99,7 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
       </aside>
 
       {/* Main Content */}
-      <div className="main-content">
+      <div className={`main-content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* Topbar */}
         <header className="topbar">
           <button

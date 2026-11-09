@@ -368,6 +368,10 @@
   color: #6B7280;
 }
 
+.search-input .search-icon svg {
+  display: block;
+}
+
 /* Page Header */
 .page-header {
   display: flex;

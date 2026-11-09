@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import './Components.css'
 
 export function Card({ title, children, className = '' }) {
@@ -67,8 +69,9 @@ export function Table({ columns, data, onEdit, onDelete }) {
                       className="btn-icon btn-edit"
                       onClick={() => onEdit(row)}
                       title="Editar"
+                      aria-label="Editar"
                     >
-                      ✏️
+                      <FontAwesomeIcon icon={faPenToSquare} />
                     </button>
                   )}
                   {onDelete && (
@@ -76,8 +79,9 @@ export function Table({ columns, data, onEdit, onDelete }) {
                       className="btn-icon btn-delete"
                       onClick={() => onDelete(row.id)}
                       title="Excluir"
+                      aria-label="Excluir"
                     >
-                      🗑️
+                      <FontAwesomeIcon icon={faTrashCan} />
                     </button>
                   )}
                 </td>
@@ -146,7 +150,9 @@ export function SearchInput({ value, onChange, placeholder = 'Buscar...' }) {
         onChange={onChange}
         placeholder={placeholder}
       />
-      <span className="search-icon">🔍</span>
+      <span className="search-icon" aria-hidden="true">
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+      </span>
     </div>
   )
 }

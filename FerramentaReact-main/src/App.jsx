@@ -18,7 +18,7 @@ import { clearBasicAuth, hasBasicAuth } from './utils/api'
 import './App.css'
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 1024)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [authenticated, setAuthenticated] = useState(() => hasBasicAuth())
 
   useEffect(() => {
