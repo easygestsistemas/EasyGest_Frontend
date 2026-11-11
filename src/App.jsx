@@ -31,9 +31,6 @@ function App() {
     return () => window.removeEventListener('easygest:auth-required', handleAuthRequired)
   }, [])
 
-  if (!authenticated) {
-    return <Login onAuthenticated={() => setAuthenticated(true)} />
-  }
 
   return (
       <Layout sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
