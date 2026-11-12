@@ -61,16 +61,16 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
   }
 
   const menuItems = [
-    { path: '/', label: 'Dashboard', icon: faChartLine },
-    { path: '/clientes', label: 'Clientes', icon: faUsers },
-    { path: '/produtos', label: 'Produtos', icon: faBox },
-    { path: '/estoque', label: 'Estoque', icon: faBoxesStacked },
-    { path: '/financeiro', label: 'Financeiro', icon: faMoneyBillWave },
-    { path: '/fornecedores', label: 'Fornecedores', icon: faHandshake },
-    { path: '/rh', label: 'RH', icon: faUserTie },
-    { path: '/prestadores', label: 'Prestadores', icon: faScrewdriverWrench },
-    { path: '/relatorios', label: 'Relatórios', icon: faChartColumn },
-    { path: '/perfil', label: 'Perfil', icon: faUser }
+    { path: '/app/dashboard', label: 'Dashboard', icon: faChartLine },
+    { path: '/app/clientes', label: 'Clientes', icon: faUsers },
+    { path: '/app/produtos', label: 'Produtos', icon: faBox },
+    { path: '/app/estoque', label: 'Estoque', icon: faBoxesStacked },
+    { path: '/app/financeiro', label: 'Financeiro', icon: faMoneyBillWave },
+    { path: '/app/fornecedores', label: 'Fornecedores', icon: faHandshake },
+    { path: '/app/rh', label: 'RH', icon: faUserTie },
+    { path: '/app/prestadores', label: 'Prestadores', icon: faScrewdriverWrench },
+    { path: '/app/relatorios', label: 'Relatórios', icon: faChartColumn },
+    { path: '/app/perfil', label: 'Perfil', icon: faUser }
   ]
 
   return (
