@@ -1,0 +1,216 @@
+.sobre-hero {
+  padding: 100px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #1E40AF, #2563EB);
+  color: white;
+}
+
+.sobre-hero span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.sobre-hero h1 {
+  max-width: 750px;
+  margin: 20px auto;
+  font-size: clamp(30px, 5vw, 46px);
+}
+
+.sobre-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #DBEAFE;
+}
+
+.sobre-content {
+  padding: 90px 8%;
+  background: #FFFFFF;
+}
+
+.sobre-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sobre-container h2 {
+  color: #1E2E4F;
+  font-size: 30px;
+  margin-bottom: 24px;
+}
+
+.sobre-container p {
+  color: #64748B;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .sobre-hero {
+    padding: 70px 6%;
+  }
+
+  .sobre-content {
+    padding: 60px 6%;
+  }
+}
+.sobre-proposta {
+  padding: 90px 8%;
+  background: #F8FAFC;
+}
+
+.sobre-proposta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sobre-proposta-heading {
+  max-width: 700px;
+  margin-bottom: 45px;
+}
+
+.sobre-proposta-heading span {
+  color: #2563EB;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.sobre-proposta-heading h2 {
+  color: #1E2E4F;
+  font-size: clamp(28px, 4vw, 38px);
+  margin: 16px 0;
+}
+
+.sobre-proposta-heading p {
+  color: #64748B;
+  line-height: 1.8;
+}
+
+.sobre-proposta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sobre-proposta-card {
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid #E5EAF2;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sobre-proposta-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(30, 46, 79, 0.08);
+}
+
+.sobre-proposta-card h3 {
+  color: #1E2E4F;
+  margin-bottom: 12px;
+}
+
+.sobre-proposta-card p {
+  color: #64748B;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .sobre-proposta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-proposta {
+    padding: 65px 6%;
+  }
+}
+.sobre-futuro {
+  padding: 100px 8%;
+  background: #FFFFFF;
+}
+
+.sobre-futuro-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.sobre-futuro-text > span {
+  color: #2563EB;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.sobre-futuro-text h2 {
+  color: #1E2E4F;
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 18px 0;
+}
+
+.sobre-futuro-text p {
+  color: #64748B;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.sobre-futuro-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #2563EB;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sobre-futuro-link:hover {
+  color: #1E2E4F;
+}
+
+.sobre-futuro-highlight {
+  padding: 45px 35px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #1E40AF, #2563EB);
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.sobre-futuro-symbol {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 20px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.sobre-futuro-highlight h3 {
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.sobre-futuro-highlight p {
+  color: #DBEAFE;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .sobre-futuro {
+    padding: 65px 6%;
+  }
+
+  .sobre-futuro-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

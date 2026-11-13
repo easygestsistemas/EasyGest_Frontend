@@ -1,0 +1,106 @@
+
+.contato-hero {
+  padding: 100px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #1E40AF, #2563EB);
+  color: #FFFFFF;
+}
+
+.contato-hero span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.contato-hero h1 {
+  margin: 20px auto;
+  font-size: clamp(30px, 5vw, 46px);
+}
+
+.contato-hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #DBEAFE;
+  line-height: 1.8;
+}
+
+.contato-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.contato-info h2 {
+  color: #1E2E4F;
+  margin: 20px 0 12px;
+}
+
+.contato-info p,
+.contato-card p {
+  color: #64748B;
+  line-height: 1.8;
+}
+
+.contato-info a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #2563EB;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contato-info a:hover {
+  text-decoration: underline;
+}
+
+.contato-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 23px;
+}
+
+.contato-card {
+  padding: 35px;
+  border: 1px solid #E5EAF2;
+  border-radius: 14px;
+  background: #F8FAFC;
+}
+
+.contato-card > svg {
+  color: #2563EB;
+  font-size: 26px;
+}
+
+.contato-card h3 {
+  color: #1E2E4F;
+  margin: 18px 0 12px;
+}
+
+.contato-card a {
+  display: inline-block;
+  margin-top: 18px;
+  color: #2563EB;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .contato-hero {
+    padding: 70px 6%;
+  }
+
+  .contato-content {
+    grid-template-columns: 1fr;
+    padding: 60px 6%;
+  }
+}

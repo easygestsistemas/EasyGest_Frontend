@@ -19,7 +19,24 @@ import ProtectedLayout from './components/ProtectedLayout'
 import PublicLayout from './components/PublicLayout/PublicLayout'
 import Home from './pages/public/Home'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import Sobre from './pages/public/Sobre'
+import Funcionalidades from './pages/public/Funcionalidades'
+import Planos from './pages/public/Planos'
+import Contato from './pages/public/Contato'
+import { Helmet } from 'react-helmet-async'
 
+
+function AppSEOLayout() {
+  return (
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
+      <Outlet />
+    </>
+  )
+}
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [authenticated, setAuthenticated] = useState(() => hasBasicAuth())
@@ -41,7 +58,7 @@ function App() {
 return (
   <Routes>
     {/* Área do ERP */}
-    <Route path="/app" element={<Outlet />}>
+    <Route path="/app" element={<AppSEOLayout />}>
       
       {/* Entrada do sistema */}
       <Route
@@ -80,10 +97,14 @@ return (
       </Route>
     </Route>
 
-    {/* Site institucional */}
+        {/* Site institucional */}
     <Route path="/" element={<PublicLayout />}>
-      <Route index element={<Home />} />
-    </Route>
+  <Route index element={<Home />} />
+  <Route path="sobre" element={<Sobre />} />
+  <Route path="funcionalidades" element={<Funcionalidades />} />
+  <Route path="planos" element={<Planos />} />
+  <Route path="contato" element={<Contato />} />
+</Route>
 
     {/* Endereços não encontrados */}
     <Route path="*" element={<Navigate to="/" replace />} />

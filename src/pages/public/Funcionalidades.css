@@ -1,0 +1,146 @@
+
+.funcionalidades-hero {
+  padding: 100px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #1E40AF, #2563EB);
+  color: #FFFFFF;
+}
+
+.funcionalidades-hero span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.funcionalidades-hero h1 {
+  max-width: 800px;
+  margin: 20px auto;
+  font-size: clamp(30px, 5vw, 46px);
+}
+
+.funcionalidades-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #DBEAFE;
+  line-height: 1.8;
+}
+
+.funcionalidades-content {
+  padding: 90px 8%;
+  background: #F8FAFC;
+}
+
+.funcionalidades-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.funcionalidades-heading h2 {
+  color: #1E2E4F;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.funcionalidades-heading p {
+  color: #64748B;
+  line-height: 1.7;
+}
+
+.funcionalidades-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.funcionalidade-card {
+  padding: 28px 24px;
+  background: #FFFFFF;
+  border: 1px solid #E5EAF2;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.funcionalidade-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(30, 46, 79, 0.08);
+}
+
+.funcionalidade-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 21px;
+}
+
+.funcionalidade-card h3 {
+  color: #1E2E4F;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.funcionalidade-card p {
+  color: #64748B;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.funcionalidades-cta {
+  padding: 75px 8%;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.funcionalidades-cta h2 {
+  color: #1E2E4F;
+  font-size: clamp(25px, 4vw, 34px);
+  margin-bottom: 14px;
+}
+
+.funcionalidades-cta p {
+  color: #64748B;
+  margin-bottom: 28px;
+}
+
+.funcionalidades-button {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.funcionalidades-button:hover {
+  background: #1E40AF;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1000px) {
+  .funcionalidades-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .funcionalidades-hero {
+    padding: 70px 6%;
+  }
+
+  .funcionalidades-content {
+    padding: 60px 6%;
+  }
+
+  .funcionalidades-grid {
+    grid-template-columns: 1fr;
+  }
+}

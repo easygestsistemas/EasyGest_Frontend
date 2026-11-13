@@ -1,0 +1,176 @@
+
+.planos-hero {
+  padding: 100px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #1E40AF, #2563EB);
+  color: #FFFFFF;
+}
+
+.planos-hero span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.planos-hero h1 {
+  max-width: 800px;
+  margin: 20px auto;
+  font-size: clamp(30px, 5vw, 46px);
+}
+
+.planos-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #DBEAFE;
+  line-height: 1.8;
+}
+
+.planos-content {
+  padding: 90px 8%;
+  background: #F8FAFC;
+}
+
+.planos-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.planos-heading h2 {
+  color: #1E2E4F;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.planos-heading p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #64748B;
+  line-height: 1.7;
+}
+
+.planos-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.plano-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 26px;
+  background: #FFFFFF;
+  border: 1px solid #E5EAF2;
+  border-radius: 14px;
+}
+
+.plano-destaque {
+  border: 2px solid #2563EB;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.10);
+}
+
+.plano-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 21px;
+}
+
+.plano-card h3 {
+  color: #1E2E4F;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.plano-card p {
+  color: #64748B;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.plano-card ul {
+  padding-left: 20px;
+  margin: 20px 0 28px;
+  color: #475569;
+}
+
+.plano-card li {
+  padding: 7px 0;
+  font-size: 14px;
+}
+
+.plano-button {
+  display: block;
+  margin-top: auto;
+  padding: 13px 18px;
+  border-radius: 8px;
+  background: #2563EB;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.plano-button:hover {
+  background: #1E40AF;
+}
+
+.planos-cta {
+  padding: 75px 8%;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.planos-cta h2 {
+  color: #1E2E4F;
+  font-size: clamp(25px, 4vw, 34px);
+  margin-bottom: 14px;
+}
+
+.planos-cta p {
+  color: #64748B;
+  margin-bottom: 28px;
+}
+
+.planos-cta-button {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.planos-cta-button:hover {
+  background: #1E40AF;
+}
+
+@media (max-width: 900px) {
+  .planos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .planos-hero {
+    padding: 70px 6%;
+  }
+
+  .planos-content {
+    padding: 60px 6%;
+  }
+
+  .planos-grid {
+    grid-template-columns: 1fr;
+  }
+}
