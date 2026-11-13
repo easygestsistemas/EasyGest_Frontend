@@ -12,7 +12,7 @@ export default function Contato() {
   return (
     <>
       <SEO
-        title="Contato | Fale com o EasyGest"
+        title="Contato"
         description="Entre em contato com o EasyGest para tirar dúvidas, conhecer a plataforma e saber mais sobre nossas soluções de gestão empresarial."
         path="/contato"
       />
