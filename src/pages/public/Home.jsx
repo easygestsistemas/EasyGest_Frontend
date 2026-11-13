@@ -21,7 +21,7 @@ export default function Home() {
         path="/"
       />
 
-      <div className="home-page">
+      <main className="home-page">
         <section className="home-hero">
           <div className="home-hero-content">
             <span className="home-eyebrow">
@@ -175,7 +175,7 @@ export default function Home() {
             Acessar o sistema
           </Link>
         </section>
-      </div>
+      </main>
     </>
   )
 }

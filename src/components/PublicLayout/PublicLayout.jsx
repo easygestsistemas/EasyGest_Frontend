@@ -8,9 +8,9 @@ export default function PublicLayout() {
     <div className="public-layout">
       <header className="public-header">
         <Link to="/" className="public-logo">
-  <img src={logotipo} alt="Símbolo EasyGest" />
-  <span>EasyGest</span>
-</Link>
+          <img src={logotipo} alt="" />
+          <span>EasyGest</span>
+        </Link>
 
         <nav className="public-nav">
           <Link to="/">Início</Link>
@@ -25,9 +25,9 @@ export default function PublicLayout() {
         </Link>
       </header>
 
-      <main className="public-content">
+      <div className="public-content">
         <Outlet />
-      </main>
+      </div>
 
       <footer className="public-footer">
         <p>© {new Date().getFullYear()} EasyGest. Todos os direitos reservados.</p>
