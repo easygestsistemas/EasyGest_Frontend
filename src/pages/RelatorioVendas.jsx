@@ -3,9 +3,11 @@ import { Line } from 'react-chartjs-2'
 import { PageHeader, Card, KPICard, Table } from '../components/Common'
 import { apiJson } from '../utils/api'
 import { formatCurrency } from '../utils/helpers'
+import useAccessibility from '../components/AccessibilityWidget/useAccessibility'
 import './Pages.css'
 
 export default function RelatorioVendas() {
+  const { palette } = useAccessibility()
   const [period, setPeriod] = useState('7d')
   const [vendasDetalhadas, setVendasDetalhadas] = useState([])
 
@@ -60,8 +62,8 @@ export default function RelatorioVendas() {
     datasets: [{
       label: 'Vendas',
       data: vendasSemanal.map(v => v.valor),
-      borderColor: '#8FB3E2',
-      backgroundColor: 'rgba(143, 179, 226, 0.1)',
+      borderColor: palette.chartPrimary,
+      backgroundColor: palette.chartPrimaryFill,
       tension: 0.4,
       fill: true
     }]
@@ -94,7 +96,12 @@ export default function RelatorioVendas() {
       </div>
 
       <Card title="Gráfico de Vendas" className="chart-card">
-        <Line data={chartData} options={{ responsive: true }} />
+        <Line
+          data={chartData}
+          options={{ responsive: true }}
+          role="img"
+          aria-label="Gráfico de vendas por dia; os valores também estão disponíveis na tabela de vendas detalhadas."
+        />
       </Card>
 
       <Card title="Vendas Detalhadas">

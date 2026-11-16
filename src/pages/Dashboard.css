@@ -25,6 +25,19 @@
   max-height: 300px;
 }
 
+.chart-data-details {
+  margin-top: 12px;
+  color: #1E2E4F;
+  font-size: 13px;
+}
+
+.chart-data-details summary {
+  width: fit-content;
+  margin-bottom: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .tables-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));

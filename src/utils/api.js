@@ -19,6 +19,24 @@ export function setBasicAuth(username, password) {
   sessionStorage.setItem(BASIC_AUTH_KEY, credentials)
 }
 
+export function getBasicAuthUsername() {
+  const credentials = sessionStorage.getItem(BASIC_AUTH_KEY)
+  if (!credentials) {
+    return null
+  }
+
+  try {
+    const decodedCredentials = atob(credentials)
+    const separatorIndex = decodedCredentials.indexOf(':')
+    return separatorIndex > 0
+      ? decodedCredentials.slice(0, separatorIndex).trim().toLowerCase()
+      : null
+  } catch (error) {
+    console.warn('Não foi possível identificar o usuário da sessão atual.', error)
+    return null
+  }
+}
+
 export function clearBasicAuth() {
   sessionStorage.removeItem(BASIC_AUTH_KEY)
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PageHeader, Card, FormGroup, Button } from '../components/Common'
+import AccessibilityWidget from '../components/AccessibilityWidget/AccessibilityWidget'
 import './Perfil.css'
 
 export default function Perfil() {
@@ -43,7 +44,10 @@ export default function Perfil() {
         <div className="profile-section">
           <div className="profile-avatar">
             <span className="avatar-icon">👤</span>
-            <button className="btn-change-avatar">Alterar Avatar</button>
+            <div className="profile-avatar-actions">
+              <button className="btn-change-avatar">Alterar Avatar</button>
+              <AccessibilityWidget />
+            </div>
           </div>
 
           <div className="profile-info">

@@ -15,11 +15,13 @@ import {
 } from 'chart.js'
 import { PageHeader, Card, KPICard, Badge, Table } from '../components/Common'
 import { formatCurrency } from '../utils/helpers'
+import useAccessibility from '../components/AccessibilityWidget/useAccessibility'
 import './Dashboard.css'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler)
 
 export default function Dashboard() {
+    const { palette } = useAccessibility()
     const [kpis, setKpis] = useState({
     vendasHoje: 0,
     ticketMedio: 0,
@@ -199,10 +201,9 @@ setMovMensal(
             v => v.valor
           ) || [],
 
-        borderColor: '#8FB3E2',
+        borderColor: palette.chartPrimaryBorder || palette.chartPrimary,
 
-        backgroundColor:
-          'rgba(143,179,226,0.1)',
+        backgroundColor: palette.chartPrimaryFill,
 
         tension: 0.4,
 
@@ -227,8 +228,10 @@ setMovMensal(
             m => m.in
           ) || [],
 
-        backgroundColor:
-          '#10B981'
+        backgroundColor: palette.chartPrimary,
+        borderColor: palette.chartPrimaryBorder || palette.chartPrimary,
+        borderWidth: 2,
+        borderRadius: 3
       },
 
       {
@@ -239,8 +242,10 @@ setMovMensal(
             m => m.out
           ) || [],
 
-        backgroundColor:
-          '#EF4444'
+        backgroundColor: palette.chartSecondary,
+        borderColor: palette.chartSecondaryBorder || palette.chartSecondary,
+        borderWidth: 2,
+        borderRadius: 12
       }
     ]
   }
@@ -250,7 +255,10 @@ setMovMensal(
 
     plugins: {
       legend: {
-        position: 'top'
+        position: 'top',
+        labels: {
+          usePointStyle: true
+        }
       }
     }
   }
@@ -383,7 +391,19 @@ setMovMensal(
           <Line
             data={lineChartData}
             options={chartOptions}
+            role="img"
+            aria-label="Gráfico de vendas por dia; os dados também podem ser consultados em tabela."
           />
+          <details className="chart-data-details">
+            <summary>Consultar vendas em tabela</summary>
+            <Table
+              columns={[
+                { key: 'dia', label: 'Dia' },
+                { key: 'valor', label: 'Vendas', render: (row) => formatCurrency(row.valor) }
+              ]}
+              data={vendasSemanal}
+            />
+          </details>
 
         </Card>
 
@@ -395,7 +415,20 @@ setMovMensal(
           <Bar
             data={barChartData}
             options={chartOptions}
+            role="img"
+            aria-label="Gráfico mensal de entradas e saídas; os dados também podem ser consultados em tabela."
           />
+          <details className="chart-data-details">
+            <summary>Consultar entradas e saídas em tabela</summary>
+            <Table
+              columns={[
+                { key: 'mes', label: 'Mês' },
+                { key: 'in', label: 'Entradas', render: (row) => formatCurrency(row.in) },
+                { key: 'out', label: 'Saídas', render: (row) => formatCurrency(row.out) }
+              ]}
+              data={movMensal}
+            />
+          </details>
 
         </Card>
 

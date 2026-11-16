@@ -76,6 +76,12 @@ npm run dev
 
 O Vite ficará acessível em `http://localhost:5173`. Em desenvolvimento, as chamadas `/api` passam pelo proxy do Vite e são encaminhadas ao backend do Render, evitando o bloqueio de CORS enquanto o front roda em localhost. Para acessar pela rede local, use também o endereço de rede exibido pelo Vite no terminal.
 
+## Acessibilidade de cores
+
+Na página **Meu Perfil**, abra **Configurar acessibilidade** para escolher uma paleta ou ativar o alto contraste. As opções mudam as cores sem aplicar filtros de simulação; os status também exibem símbolos e rótulos, e os gráficos do Dashboard oferecem os dados em tabelas.
+
+As preferências ficam separadas pelo nome de usuário no `localStorage` deste navegador e são restauradas quando essa conta entrar novamente aqui. No momento, não são gravadas no backend nem sincronizadas entre dispositivos. As paletas adaptam a apresentação da interface, mas não corrigem a visão nem garantem, por si só, conformidade WCAG; informações essenciais devem continuar identificadas por texto, ícones ou padrões.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
