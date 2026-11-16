@@ -12,7 +12,7 @@ import RelatorioCritico from './pages/RelatorioCritico'
 import RelatorioVendas from './pages/RelatorioVendas'
 import Perfil from './pages/Perfil'
 import Login from './components/Login'
-import { clearBasicAuth, hasBasicAuth } from './utils/api'
+import { clearBasicAuth, getBasicAuthUsername, hasBasicAuth } from './utils/api'
 import './App.css'
 import ProtectedRoute from './components/ProtectedRoute'
 import ProtectedLayout from './components/ProtectedLayout'
@@ -24,6 +24,7 @@ import Funcionalidades from './pages/public/Funcionalidades'
 import Planos from './pages/public/Planos'
 import Contato from './pages/public/Contato'
 import { Helmet } from 'react-helmet-async'
+import AccessibilityProvider from './components/AccessibilityWidget/AccessibilityProvider'
 
 
 function AppSEOLayout() {
@@ -40,6 +41,7 @@ function AppSEOLayout() {
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [authenticated, setAuthenticated] = useState(() => hasBasicAuth())
+  const accessibilityUsername = authenticated ? getBasicAuthUsername() : null
 
   useEffect(() => {
     const handleAuthRequired = () => {
@@ -56,59 +58,63 @@ function App() {
 
 
 return (
-  <Routes>
-    {/* Área do ERP */}
-    <Route path="/app" element={<AppSEOLayout />}>
-      
-      {/* Entrada do sistema */}
-      <Route
-        index
-        element={
-          authenticated
-            ? <Navigate to="/app/dashboard" replace />
-            : <Login onAuthenticated={() => setAuthenticated(true)} />
-        }
-      />
+  <AccessibilityProvider
+    key={accessibilityUsername || 'anonymous'}
+    username={accessibilityUsername}
+  >
+    <Routes>
+      {/* Área do ERP */}
+      <Route path="/app" element={<AppSEOLayout />}>
+        {/* Entrada do sistema */}
+        <Route
+          index
+          element={
+            authenticated
+              ? <Navigate to="/app/dashboard" replace />
+              : <Login onAuthenticated={() => setAuthenticated(true)} />
+          }
+        />
 
-      {/* Área protegida */}
-      <Route
-        element={
-          <ProtectedRoute authenticated={authenticated}>
-            <ProtectedLayout
-              sidebarOpen={sidebarOpen}
-              setSidebarOpen={setSidebarOpen}
-            />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="clientes" element={<Clientes />} />
-        <Route path="produtos" element={<Produtos />} />
-        <Route path="estoque" element={<Estoque />} />
-        <Route path="financeiro" element={<Financeiro />} />
-        <Route path="fornecedores" element={<Fornecedores />} />
-        <Route path="rh" element={<RH />} />
-        <Route path="prestadores" element={<Prestadores />} />
-        <Route path="relatorios" element={<Relatorios />} />
-        <Route path="relatorio-estoque-critico" element={<RelatorioCritico />} />
-        <Route path="relatorio-vendas" element={<RelatorioVendas />} />
-        <Route path="perfil" element={<Perfil />} />
-        <Route path="*" element={<Navigate to="/app/dashboard" replace />} />
+        {/* Área protegida */}
+        <Route
+          element={
+            <ProtectedRoute authenticated={authenticated}>
+              <ProtectedLayout
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+              />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="clientes" element={<Clientes />} />
+          <Route path="produtos" element={<Produtos />} />
+          <Route path="estoque" element={<Estoque />} />
+          <Route path="financeiro" element={<Financeiro />} />
+          <Route path="fornecedores" element={<Fornecedores />} />
+          <Route path="rh" element={<RH />} />
+          <Route path="prestadores" element={<Prestadores />} />
+          <Route path="relatorios" element={<Relatorios />} />
+          <Route path="relatorio-estoque-critico" element={<RelatorioCritico />} />
+          <Route path="relatorio-vendas" element={<RelatorioVendas />} />
+          <Route path="perfil" element={<Perfil />} />
+          <Route path="*" element={<Navigate to="/app/dashboard" replace />} />
+        </Route>
       </Route>
-    </Route>
 
-        {/* Site institucional */}
-    <Route path="/" element={<PublicLayout />}>
-  <Route index element={<Home />} />
-  <Route path="sobre" element={<Sobre />} />
-  <Route path="funcionalidades" element={<Funcionalidades />} />
-  <Route path="planos" element={<Planos />} />
-  <Route path="contato" element={<Contato />} />
-</Route>
+      {/* Site institucional */}
+      <Route path="/" element={<PublicLayout />}>
+        <Route index element={<Home />} />
+        <Route path="sobre" element={<Sobre />} />
+        <Route path="funcionalidades" element={<Funcionalidades />} />
+        <Route path="planos" element={<Planos />} />
+        <Route path="contato" element={<Contato />} />
+      </Route>
 
-    {/* Endereços não encontrados */}
-    <Route path="*" element={<Navigate to="/" replace />} />
-  </Routes>
+      {/* Endereços não encontrados */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  </AccessibilityProvider>
 )
 
 

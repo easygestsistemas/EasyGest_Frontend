@@ -36,8 +36,19 @@ export function Badge({ status, children }) {
     warning: 'badge-warning',
     info: 'badge-info'
   }[status] || 'badge-default'
+  const statusSymbol = {
+    success: '✓',
+    danger: '!',
+    warning: '▲',
+    info: 'i'
+  }[status] || '•'
 
-  return <span className={`badge ${statusClass}`}>{children}</span>
+  return (
+    <span className={`badge ${statusClass}`}>
+      <span className="badge-symbol" aria-hidden="true">{statusSymbol}</span>
+      {children}
+    </span>
+  )
 }
 
 export function Table({ columns, data, onEdit, onDelete }) {

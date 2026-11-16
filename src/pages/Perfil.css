@@ -1,6 +1,6 @@
 .profile-section {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 330px minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
@@ -8,11 +8,43 @@
 .profile-avatar {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
 }
 
+.profile-avatar-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.profile-avatar-actions .btn-change-avatar,
+.profile-avatar-actions .a11y-profile-settings {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.profile-avatar-actions .btn-change-avatar {
+  padding: 8px 10px;
+}
+
+.profile-avatar-actions .a11y-profile-trigger {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 8px;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.profile-avatar-actions .a11y-profile-trigger svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
 .avatar-icon {
+  align-self: center;
   font-size: 80px;
   width: 120px;
   height: 120px;
@@ -94,6 +126,10 @@
 @media (max-width: 768px) {
   .profile-section {
     grid-template-columns: 1fr;
+  }
+
+  .profile-avatar {
+    max-width: 330px;
   }
 
   .profile-info {
