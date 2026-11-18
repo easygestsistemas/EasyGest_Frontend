@@ -21,7 +21,7 @@ import './Dashboard.css'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler)
 
 export default function Dashboard() {
-    const { palette } = useAccessibility()
+    const { palette, uiScale } = useAccessibility()
     const [kpis, setKpis] = useState({
     vendasHoje: 0,
     ticketMedio: 0,
@@ -252,12 +252,18 @@ setMovMensal(
 
   const chartOptions = {
     responsive: true,
+    font: {
+      size: 12 * uiScale
+    },
 
     plugins: {
       legend: {
         position: 'top',
         labels: {
-          usePointStyle: true
+          usePointStyle: true,
+          font: {
+            size: 12 * uiScale
+          }
         }
       }
     }

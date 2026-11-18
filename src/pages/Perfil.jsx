@@ -137,7 +137,7 @@ export default function Perfil() {
           </FormGroup>
           <Button onClick={handleChangePassword}>Alterar Senha</Button>
 
-          <hr style={{ margin: '24px 0', borderColor: '#E5E7EB' }} />
+          <hr style={{ margin: '1.5rem 0', borderColor: '#E5E7EB' }} />
 
           <h4>Autenticação de Dois Fatores</h4>
           <p>Aumente a segurança da sua conta ativando a autenticação de dois fatores.</p>

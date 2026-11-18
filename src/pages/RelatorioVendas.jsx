@@ -7,7 +7,7 @@ import useAccessibility from '../components/AccessibilityWidget/useAccessibility
 import './Pages.css'
 
 export default function RelatorioVendas() {
-  const { palette } = useAccessibility()
+  const { palette, uiScale } = useAccessibility()
   const [period, setPeriod] = useState('7d')
   const [vendasDetalhadas, setVendasDetalhadas] = useState([])
 
@@ -98,7 +98,17 @@ export default function RelatorioVendas() {
       <Card title="Gráfico de Vendas" className="chart-card">
         <Line
           data={chartData}
-          options={{ responsive: true }}
+          options={{
+            responsive: true,
+            font: { size: 12 * uiScale },
+            plugins: {
+              legend: {
+                labels: {
+                  font: { size: 12 * uiScale }
+                }
+              }
+            }
+          }}
           role="img"
           aria-label="Gráfico de vendas por dia; os valores também estão disponíveis na tabela de vendas detalhadas."
         />

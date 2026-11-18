@@ -10,6 +10,13 @@ export const ACCESSIBILITY_MODES = [
   { value: 'achromatomaly', label: 'Tons de cinza com símbolos reforçados' }
 ]
 
+export const UI_SCALE_OPTIONS = [
+  { value: 1, label: '100%', description: 'Padrão' },
+  { value: 1.25, label: '125%', description: 'Leve' },
+  { value: 1.5, label: '150%', description: 'Intermediária' },
+  { value: 1.75, label: '175%', description: 'Elevada' }
+]
+
 const PALETTES = {
   standard: {
     theme: 'standard',

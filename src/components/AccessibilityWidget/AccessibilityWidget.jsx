@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ACCESSIBILITY_MODES } from '../../utils/accessibility'
+import { ACCESSIBILITY_MODES, UI_SCALE_OPTIONS } from '../../utils/accessibility'
 import { Badge } from '../Common'
 import useAccessibility from './useAccessibility'
 import './AccessibilityWidget.css'
@@ -7,8 +7,12 @@ import './AccessibilityWidget.css'
 export default function AccessibilityWidget() {
   const {
     settings,
+    uiScale,
+    uiScaleMessage,
     hasUnsavedChanges,
     updateSettings,
+    updateUiScale,
+    resetUiScale,
     saveSettings,
     saveMessage
   } = useAccessibility()
@@ -107,6 +111,47 @@ export default function AccessibilityWidget() {
             preferências para mantê-las neste navegador para seu usuário; elas não
             são sincronizadas com outros dispositivos.
           </p>
+
+          <section className="a11y-scale-section" aria-labelledby="a11y-scale-title">
+            <h4 id="a11y-scale-title">Baixa visão</h4>
+            <p className="a11y-profile-description">
+              Amplie textos e componentes da interface. A escala é aplicada
+              imediatamente e salva neste navegador.
+            </p>
+
+            <div className="a11y-scale-options" role="group" aria-label="Escala da interface">
+              {UI_SCALE_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  className={`a11y-scale-option${uiScale === option.value ? ' active' : ''}`}
+                  type="button"
+                  aria-pressed={uiScale === option.value}
+                  onClick={() => updateUiScale(option.value)}
+                >
+                  <span>{option.label}</span>
+                  <small>{option.description}</small>
+                </button>
+              ))}
+            </div>
+
+            <p className="a11y-profile-status" role="status" aria-live="polite">
+              Escala ativa: {Math.round(uiScale * 100)}%.
+            </p>
+            <button
+              className="a11y-scale-reset"
+              type="button"
+              onClick={resetUiScale}
+              disabled={uiScale === 1}
+            >
+              Restaurar escala padrão (100%)
+            </button>
+            {uiScaleMessage && (
+              <p className="a11y-profile-status" role="status">
+                {uiScaleMessage}
+              </p>
+            )}
+          </section>
+
           {saveMessage && <p className="a11y-profile-status" role="status">{saveMessage}</p>}
         </section>
       )}

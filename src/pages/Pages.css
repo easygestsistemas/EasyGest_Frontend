@@ -1,19 +1,19 @@
 .page {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .toolbar-card {
   background: white;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 0.5rem;
+  padding: 1rem;
   margin-bottom: 0;
 }
 
 .toolbar {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
   align-items: center;
 }
 
@@ -24,17 +24,17 @@
 
 .period-selector {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .period-selector button {
-  padding: 8px 16px;
-  border: 1px solid #D1D5DB;
+  padding: 0.5rem 1rem;
+  border: 0.0625rem solid #D1D5DB;
   background: white;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: #6B7280;
   transition: all 0.2s;
@@ -54,18 +54,18 @@
 .tabs {
   display: flex;
   gap: 0;
-  border-bottom: 2px solid #E5E7EB;
-  margin-bottom: 20px;
+  border-bottom: 0.125rem solid #E5E7EB;
+  margin-bottom: 1.25rem;
   flex-wrap: wrap;
 }
 
 .tab-btn {
-  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
   background: none;
   border: none;
-  border-bottom: 3px solid transparent;
+  border-bottom: 0.1875rem solid transparent;
   color: #6B7280;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -103,30 +103,30 @@
   }
 
   .period-selector {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
   .period-selector button {
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .page {
-    gap: 14px;
+    gap: 0.875rem;
   }
 
   .toolbar-card {
-    padding: 12px;
+    padding: 0.75rem;
   }
 
   .tab-btn {
     flex: 1 1 auto;
-    padding: 10px 12px;
+    padding: 0.625rem 0.75rem;
   }
 
   .period-selector button {
-    flex: 1 1 calc(50% - 4px);
+    flex: 1 1 calc(50% - 0.25rem);
   }
 }

@@ -1,7 +1,7 @@
 .relatorios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+  gap: 1.25rem;
 }
 
 .relatorio-card-link {
@@ -11,36 +11,36 @@
 
 .relatorio-card {
   background: white;
-  border-radius: 8px;
-  padding: 24px;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #E5E7EB;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
+  border: 0.0625rem solid #E5E7EB;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .relatorio-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.25rem);
   border-color: #8FB3E2;
 }
 
 .relatorio-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .relatorio-card h3 {
-  margin: 0 0 12px 0;
-  font-size: 16px;
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
   color: #1E2E4F;
   font-weight: 600;
 }
 
 .relatorio-card p {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #6B7280;
 }
 
