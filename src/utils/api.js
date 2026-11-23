@@ -1,3 +1,5 @@
+import { isPresentationMockActive, getPresentationMockResponse } from './presentationMock'
+
 const configuredApiUrl = import.meta.env.VITE_API_URL?.trim()
 
 export const API_URL = import.meta.env.DEV
@@ -58,6 +60,13 @@ async function readResponseBody(response) {
 }
 
 export async function apiRequest(path, options = {}) {
+  if (isPresentationMockActive()) {
+    const mockData = getPresentationMockResponse(path, options)
+    if (mockData !== undefined) {
+      return mockData
+    }
+  }
+
   const method = options.method || 'GET'
   const headers = new Headers(options.headers || {})
   const credentials = sessionStorage.getItem(BASIC_AUTH_KEY)

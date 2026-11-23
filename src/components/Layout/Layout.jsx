@@ -14,6 +14,7 @@ import {
   faUserTie
 } from '@fortawesome/free-solid-svg-icons'
 import { clearBasicAuth, hasBasicAuth, setBasicAuth } from '../../utils/api'
+import { isPresentationMockActive, setPresentationMockActive } from '../../utils/presentationMock'
 import logotipo from '../../../img/logotipo.png'
 import './Layout.css'
 
@@ -23,6 +24,23 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
   const [authUser, setAuthUser] = useState('')
   const [authPassword, setAuthPassword] = useState('')
   const [authError, setAuthError] = useState('')
+  const [mockActive, setMockActive] = useState(() => isPresentationMockActive())
+
+  useEffect(() => {
+    const handleMockToggle = (e) => {
+      setMockActive(e.detail?.active ?? isPresentationMockActive())
+    }
+
+    window.addEventListener('easygest:mock-toggle', handleMockToggle)
+    return () => window.removeEventListener('easygest:mock-toggle', handleMockToggle)
+  }, [])
+
+  const toggleMock = () => {
+    const next = !mockActive
+    setPresentationMockActive(next)
+    setMockActive(next)
+    window.location.reload()
+  }
 
   useEffect(() => {
     const handleAuthRequired = () => {
@@ -113,6 +131,15 @@ export default function Layout({ children, sidebarOpen, setSidebarOpen }) {
             <h2>EasyGest - Sistema de Gestão</h2>
           </div>
           <div className="user-menu">
+            <button
+              className={`mock-presentation-badge ${mockActive ? 'active' : 'inactive'}`}
+              type="button"
+              onClick={toggleMock}
+              title={mockActive ? 'Mock de apresentação ativo. Clique para desativar e usar dados reais.' : 'Mock desativado. Clique para ativar dados de apresentação.'}
+            >
+              <span className="mock-indicator-dot" />
+              <span>{mockActive ? 'Apresentação: ON' : 'Apresentação: OFF'}</span>
+            </button>
             <button className="auth-button" type="button" onClick={hasBasicAuth() ? handleLogout : () => setShowAuth(true)}>
               {hasBasicAuth() ? 'Sair' : 'Entrar'}
             </button>
