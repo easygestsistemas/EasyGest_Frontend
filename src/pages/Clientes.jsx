@@ -34,13 +34,13 @@ export default function Clientes() {
       const data = await apiJson('/clientes')
 
       const clientesFormatados = data.map(cliente => ({
-        id: cliente.codCliente,
-        nome: cliente.nomeCliente,
-        email: cliente.emailCliente,
-        telefone: cliente.telefoneCliente,
-        cpf: cliente.cpfCliente,
-        cidade: cliente.enderecoCliente,
-        status: cliente.statusCliente?.trim() || 'Ativo'
+        id: cliente.codCliente || cliente.id,
+        nome: cliente.nomeCliente || cliente.nome,
+        email: cliente.emailCliente || cliente.email,
+        telefone: cliente.telefoneCliente || cliente.telefone,
+        cpf: cliente.cpfCliente || cliente.cnpjCpf || cliente.cpf,
+        cidade: cliente.enderecoCliente || cliente.cidade,
+        status: (cliente.statusCliente || cliente.status)?.trim() || 'Ativo'
       }))
 
       setClientes(clientesFormatados)

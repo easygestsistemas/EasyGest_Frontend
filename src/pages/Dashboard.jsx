@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { apiJson } from '../utils/api'
+import { isPresentationMockActive } from '../utils/presentationMock'
 import { Line, Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -154,20 +155,24 @@ export default function Dashboard() {
 
       setVendasSemanal(semanal)
 
-      // KPIS COM MARGEM E VARIAÇÕES EXECUTIVAS
+      // KPIS: Quando o mock está ativo, usa métricas calculadas com variações para apresentação;
+      // Quando desligado, usa estritamente os valores reais retornados pelo banco.
+      const isMock = isPresentationMockActive()
       const ticketMedioCalc = vendasDeHoje.length > 0
         ? totalVendasHoje / vendasDeHoje.length
-        : (vendas.length > 0 ? (vendas.reduce((acc, v) => acc + Number(v.valorTotal || 0), 0) / vendas.length) : 0)
+        : (isMock && vendas.length > 0 ? (vendas.reduce((acc, v) => acc + Number(v.valorTotal || 0), 0) / vendas.length) : 0)
 
       setKpis({
         vendasHoje: totalVendasHoje,
         ticketMedio: ticketMedioCalc,
-        itensVendidos: totalItensVendidos || (vendasDeHoje.length * 4) || vendas.length,
-        margem: 34.8,
-        variacaoVendas: 14.2,
-        variacaoTicket: 5.8,
-        variacaoItens: 8.4,
-        variacaoMargem: 2.1
+        itensVendidos: isMock
+          ? (totalItensVendidos || 48)
+          : (totalItensVendidos || vendas.length),
+        margem: isMock ? 34.8 : 0,
+        variacaoVendas: isMock ? 14.2 : 0,
+        variacaoTicket: isMock ? 5.8 : 0,
+        variacaoItens: isMock ? 8.4 : 0,
+        variacaoMargem: isMock ? 2.1 : 0
       })
 
       // VENDAS RECENTES (ÚLTIMAS SAÍDAS)
